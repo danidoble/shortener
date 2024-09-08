@@ -5,3 +5,64 @@
 [x-cloak] {
     display: none;
 }
+
+@layer components {
+    .b-scroll::-webkit-scrollbar {
+        width: 15px; /* Tamaño del scroll en vertical */
+        height: 15px; /* Tamaño del scroll en horizontal */
+        /*display: none;  !* Ocultar scroll *!*/
+    }
+
+    /* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+    .b-scroll::-webkit-scrollbar-thumb {
+        @apply bg-neutral-400 rounded-full;
+    }
+    .b-scroll::-webkit-scrollbar-thumb:is(.dark *) {
+        @apply bg-neutral-600 rounded-full;
+    }
+
+    /* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+    .b-scroll::-webkit-scrollbar-thumb:hover {
+        @apply bg-neutral-500;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    }
+    .b-scroll::-webkit-scrollbar-thumb:hover:is(.dark *) {
+        @apply bg-neutral-700;
+        box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Cambiamos el fondo cuando esté en active */
+    .b-scroll::-webkit-scrollbar-thumb:active {
+        @apply bg-neutral-600;
+    }
+    .b-scroll::-webkit-scrollbar-thumb:active:is(.dark *) {
+        @apply bg-neutral-800;
+    }
+
+    /* Ponemos un color de fondo y redondeamos las esquinas del track */
+    .b-scroll::-webkit-scrollbar-track {
+        @apply bg-neutral-200 rounded-full;
+    }
+    .b-scroll::-webkit-scrollbar-track:is(.dark *) {
+        @apply bg-neutral-700 rounded-full;
+    }
+
+    /* Cambiamos el fondo cuando esté en active o hover */
+    .b-scroll::-webkit-scrollbar-track:hover,
+    .b-scroll::-webkit-scrollbar-track:active {
+        @apply bg-neutral-300;
+    }
+    .b-scroll::-webkit-scrollbar-track:hover:is(.dark *),
+    .b-scroll::-webkit-scrollbar-track:active:is(.dark *) {
+        @apply bg-neutral-700;
+    }
+
+    @supports (scrollbar-color: #ccc #fff) {
+        .b-scroll{
+            scrollbar-color: #b5b5b5 #fff;
+        }
+        .b-scroll:is(.dark *){
+            scrollbar-color: #4b5563 #1a202c;
+        }
+    }
+}

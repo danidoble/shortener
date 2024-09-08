@@ -9,15 +9,23 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+        './vendor/wireui/wireui/src/*.php',
+        './vendor/wireui/wireui/ts/**/*.ts',
+        './vendor/wireui/wireui/src/WireUi/**/*.php',
+        './vendor/wireui/wireui/src/Components/**/*.php',
     ],
 
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['SUSE', ...defaultTheme.fontFamily.sans],
+                mono: ['Inconsolata', ...defaultTheme.fontFamily.mono],
             },
         },
     },
+    presets: [
+        require("./vendor/wireui/wireui/tailwind.config.js")
+    ],
 
     plugins: [forms, typography],
 };
